@@ -32,7 +32,7 @@ namespace Project.Scripts.Player
         [Header("Player Variables")]
         public float tackle_Dur_Max;
         public float slide_Tackle_Dur_Max, attack_Speed_Cooldown_Max, pass_Range, Input_Speed, slide_Tackle_Speed_Mod,
-            tackle_Speed_Mod, damage_Cooldown_Max, tackle_Damage_Cooldown = 0.5f, slide_Tackle_Damage_Cooldown = 1.5f, attack_Cooldown;
+            tackle_Speed_Mod, damage_Cooldown_Max, tackle_Damage_Cooldown = 0.5f, slide_Tackle_Damage_Cooldown = 1.5f;
 
         public List<Player_Behaviour> accept_Teammates, passable_Teammates;
 
@@ -48,7 +48,7 @@ namespace Project.Scripts.Player
         private float min_Z, max_Z, min_X, max_X;
         private float m_Ball_Throw_Cooldown = 0.5f, m_Orig_Cooldown, m_Tackle_Duration, m_Slide_Tackle_Duration
             , m_original_Speed, m_Attack_Speed_Cooldown = 1f, m_Time_To_Reach, m_Damage_Cooldown, m_DC_Max_Original, m_Electric_Damage_Cooldown,
-            m_orig_attack_Cooldown, m_Dash_Duration, m_Current_Dash_Duration, m_invulnerability_Dur, m_Cur_Invul_Dur, m_Stun_Duration, m_Cur_Stun_Dur;
+             m_Dash_Duration, m_Current_Dash_Duration, m_invulnerability_Dur, m_Cur_Invul_Dur, m_Stun_Duration, m_Cur_Stun_Dur;
 
         [HideInInspector] public GameObject m_Owned_Ball;
         private Rewired.Player m_Player;
@@ -127,7 +127,6 @@ namespace Project.Scripts.Player
             m_Attack_Speed_Cooldown = attack_Speed_Cooldown_Max;
             m_DC_Max_Original = damage_Cooldown_Max;
             m_Electric_Damage_Cooldown = damage_Cooldown_Max + 1.5f;
-            m_orig_attack_Cooldown = attack_Cooldown;
 
             for (int i = 0; i < all_Abilities.Length; i++)
             {
@@ -146,18 +145,21 @@ namespace Project.Scripts.Player
             }
             else
             {
-                if (m_Is_Dashing && !m_Is_Being_Stunned)
+                Debug.Log($"<color=cyan>Damage?{m_Taking_Damage} Stunned?{m_Is_Being_Stunned} Dashing?{m_Is_Dashing} Name:{gameObject.name}</color>");
+                if (m_Is_Dashing && !m_Is_Being_Stunned && !m_Taking_Damage)
                 {
                     Do_Dash(transform.forward);
                 }
                 else if (m_Taking_Damage && !m_Is_Being_Stunned)
                 {
                     Do_Dash(damage_Dir);
+                    Debug.Log($"<color=cyan>Taking damage {damage_Dir} {gameObject.name}</color>");
                 }
                 else if (m_Is_Being_Stunned)
                 {
                     m_Horizontal_Comp = 0;
                     m_Vertical_Comp = 0;
+                    Debug.Log("<color=yellow>Stunned</color>");
                 }
             }
         }
@@ -205,6 +207,7 @@ namespace Project.Scripts.Player
 
 
             m_speed_Modifier = (m_Player.GetButton("Sprint") && m_Owned_Ball != null) ? sprint_speed_Mod : 1;
+
             if (running_Trail != null)
             {
                 running_Trail.enabled = (m_Player.GetButton("Sprint") && m_Owned_Ball != null) ? true : false;
@@ -239,7 +242,6 @@ namespace Project.Scripts.Player
         {
             vel.x = _dash_Dir.x * speed;
             vel.z = _dash_Dir.z * speed;
-
 
             rb.MovePosition(rb.position + new Vector3(Mathf.Clamp(vel.x, -speed, speed),
                 vel.y, Mathf.Clamp(vel.z, -speed, speed)) * Time.deltaTime);
@@ -330,12 +332,12 @@ namespace Project.Scripts.Player
                 m_Ball_Throw_Cooldown = m_Orig_Cooldown;
             }
 
-            if (!m_Read_Player_Inputs && m_Current_Dash_Duration < m_Dash_Duration)
+            if (!m_Read_Player_Inputs && m_Is_Dashing && m_Current_Dash_Duration < m_Dash_Duration)
             {
                 m_Current_Dash_Duration += Time.deltaTime;
             }
 
-            if (!m_Read_Player_Inputs && m_Current_Dash_Duration >= m_Dash_Duration)
+            if (!m_Read_Player_Inputs && m_Is_Dashing && m_Current_Dash_Duration >= m_Dash_Duration)
             {
                 m_Current_Dash_Duration = 0;
                 Reset_Dash_Variables();
@@ -404,6 +406,7 @@ namespace Project.Scripts.Player
             if (m_Damage_Cooldown <= damage_Cooldown_Max && m_Taking_Damage)
             {
                 m_Damage_Cooldown += Time.deltaTime;
+                Debug.Log($"<color=yellow>Speed:{speed} TakingDamage{m_Taking_Damage} PlayerInput:{m_Read_Player_Inputs} Stunned:{m_Is_Being_Stunned} {gameObject.name}</color>");
                 if (!m_Wall_In_Damage_Dir())
                 {
                     float prc = m_Damage_Cooldown / damage_Cooldown_Max;
@@ -414,7 +417,7 @@ namespace Project.Scripts.Player
                 {
                     Hault_Speed();
                     damage_Cooldown_Max = m_Electric_Damage_Cooldown;
-                    if (!Electrify_PS.isPlaying)
+                    if (Electrify_PS != null && !Electrify_PS.isPlaying)
                     {
                         Play_Shock_Particles();
                     }
@@ -428,7 +431,7 @@ namespace Project.Scripts.Player
                 m_Taking_Damage = false;
                 m_Read_Player_Inputs = true;
                 Slow_Speed();
-                if (Electrify_PS.isPlaying && !m_Is_Being_Stunned)
+                if (Electrify_PS != null && Electrify_PS.isPlaying && !m_Is_Being_Stunned)
                 {
                     Stop_Shock_Particles();
                 }
@@ -633,7 +636,8 @@ namespace Project.Scripts.Player
                 passable_Teammates[0].player_Controlled = true;
                 passable_Teammates[0].Player_ID = this.Player_ID;
                 passable_Teammates[0].Update_Player_ID();
-                my_Indicator.Change_Target(passable_Teammates[0].gameObject);
+                //ToDo: Implement indicators
+                //my_Indicator.Change_Target(passable_Teammates[0].gameObject);
                 my_Indicator = null;
                 Player_ID = 8;
                 Update_Player_ID();
@@ -729,8 +733,7 @@ namespace Project.Scripts.Player
                     passable_Teammates.Remove(passable_Teammates[i]);
                 }
             }
-            //ToDo:Implement Camera
-            //Camera_Behaviour.cam_Inst.Reset_Target();
+            Camera_Behaviour.cam_Inst.Reset_Target();
         }
 
         public void Passed_To(Vector3 _end_Pos, float _time)
@@ -750,6 +753,7 @@ namespace Project.Scripts.Player
             m_Read_Player_Inputs = false;
             damage_Cooldown_Max = _damage_Cooldown;
 
+            
             if (m_Owned_Ball != null)
             {
                 if (!_Is_Stealing)
@@ -808,7 +812,7 @@ namespace Project.Scripts.Player
             {
                 Pick_Up_Ball(other.gameObject);
                 //ToDo: Add team manager
-                //team_Manager.Ball_Pickup(this.gameObject);
+                //team_Manager.Ball_Pickup();
             }
 
 
@@ -823,7 +827,7 @@ namespace Project.Scripts.Player
                         {
                             other.gameObject.GetComponent<Player_Behaviour>().Swap_Possessor(this.gameObject);
                         }
-                        team_Manager.Ball_Pickup(this.gameObject);
+                        //team_Manager.Ball_Pickup();
                     }
                     else if (m_Is_Slide_Tackling)
                     {
@@ -844,7 +848,7 @@ namespace Project.Scripts.Player
             if (other.gameObject.tag == "Ball" && other.gameObject.transform.parent == null && m_can_Catch_Ball && !m_Taking_Damage)
             {
                 Pick_Up_Ball(other.gameObject);
-                team_Manager.Ball_Pickup(this.gameObject);
+                team_Manager.Ball_Pickup();
             }
 
             if (other.gameObject.tag == "Player" && (m_Is_Tackling || m_Is_Slide_Tackling)
@@ -859,7 +863,7 @@ namespace Project.Scripts.Player
                         {
                             other.gameObject.GetComponent<Player_Behaviour>().Swap_Possessor(this.gameObject);
                         }
-                        team_Manager.Ball_Pickup(this.gameObject);
+                        team_Manager.Ball_Pickup();
                     }
                     else if (m_Is_Slide_Tackling)
                     {
@@ -927,8 +931,7 @@ namespace Project.Scripts.Player
 
             m_Owned_Ball.GetComponent<Ball_Effects>().Deactivate_Trail();
             m_Owned_Ball.GetComponent<Ball_Effects>().Play_Catch_Kick();
-            //ToDo: Update Camera
-            //Camera_Behaviour.cam_Inst.Update_Target(this.transform);
+            Camera_Behaviour.cam_Inst.Update_Target(this.transform);
         }
 
 

@@ -65,7 +65,10 @@ namespace Project.Scripts.Manager
             {
                 teammates[i].team_Manager = this;
                 teammates[i].goal = goals[0];
-                teammates[i].enemy_Goal = enemy_Goal;
+
+                if(enemy_Goal != null)
+                    teammates[i].enemy_Goal = enemy_Goal;
+
                 teammates[i].Set_Min_Max(min_Z.position.z, max_Z.position.z, min_X.position.x, max_X.position.x);
                 teammates[i].ball_reference = ball_Ref;
 
@@ -75,7 +78,7 @@ namespace Project.Scripts.Manager
                 }
             }
 
-            //Change_Status(first_Target);
+            Change_Status(first_Target);
 
 
 
@@ -83,16 +86,16 @@ namespace Project.Scripts.Manager
 
         }
 
-        public void Ball_Pickup(GameObject _sending_Gameobject)
+        public void Ball_Pickup()
         {
             for (int i = 0; i < teammates.Count; i++)
             {
-                teammates[i].Random_Target_Pos(enemy_Team[i].transform);
+                //teammates[i].Random_Target_Pos(enemy_Team[i].transform);
             }
 
             for (int i = 0; i < enemy_Team.Count; i++)
             {
-                enemy_Team[i].Defend_Goal_Pos(teammates[i].transform);
+                //enemy_Team[i].Defend_Goal_Pos(teammates[i].transform);
             }
         }
 
@@ -100,12 +103,12 @@ namespace Project.Scripts.Manager
         {
             for (int i = 0; i < teammates.Count; i++)
             {
-                teammates[i].Go_To_Ball();
+                //teammates[i].Go_To_Ball();
             }
 
             for (int i = 0; i < enemy_Team.Count; i++)
             {
-                enemy_Team[i].Go_To_Ball();
+                //enemy_Team[i].Go_To_Ball();
             }
         }
 
