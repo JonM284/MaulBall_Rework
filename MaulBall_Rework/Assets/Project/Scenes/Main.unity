@@ -150,7 +150,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 41286434}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -10, y: 4.59, z: 0}
+  m_LocalPosition: {x: -14.32, y: 4.59, z: 0}
   m_LocalScale: {x: 1, y: 10, z: 20}
   m_Children: []
   m_Father: {fileID: 238147565}
@@ -242,7 +242,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 86374491}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10, y: 11.226429, z: 0}
+  m_LocalPosition: {x: 22, y: 11.226429, z: -8.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -281,6 +281,96 @@ Transform:
   - {fileID: 41286435}
   m_Father: {fileID: 0}
   m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &246748188
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 246748189}
+  m_Layer: 0
+  m_Name: Ball_Throw_Pos
+  m_TagString: Untagged
+  m_Icon: {fileID: 2488908585195742037, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &246748189
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 246748188}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 906034770}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &379589277
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 379589278}
+  m_Layer: 0
+  m_Name: Ball_Throw_Pos
+  m_TagString: Untagged
+  m_Icon: {fileID: 2488908585195742037, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &379589278
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 379589277}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1542709147}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &477350421
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 477350422}
+  m_Layer: 0
+  m_Name: Ball_Throw_Pos
+  m_TagString: Untagged
+  m_Icon: {fileID: 2488908585195742037, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &477350422
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 477350421}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1188421846}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &660907963
 GameObject:
@@ -360,13 +450,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 660907963}
-  m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
-  m_LocalPosition: {x: 0, y: 12.21, z: -13.19}
+  m_LocalRotation: {x: 0.38630852, y: 0, z: 0, w: 0.9223696}
+  m_LocalPosition: {x: 0, y: 14.94, z: -13.62}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 45.45, y: 0, z: 0}
 --- !u!114 &660907967
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -416,8 +506,8 @@ MonoBehaviour:
   min_depth_Pos: {fileID: 765379795}
   max_depth_Pos: {fileID: 86374492}
   Watch_Ball: 0
-  follow_Speed: 8
-  offset: {x: 0, y: 12.21, z: -13.19}
+  follow_Speed: 1
+  offset: {x: 0, y: 15.39, z: -13.8}
   average_positions:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -476,7 +566,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 765379794}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10, y: 11.226429, z: -13.05}
+  m_LocalPosition: {x: -22, y: 11.226429, z: -15.26}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -706,7 +796,7 @@ MonoBehaviour:
       _defaultCustomControllerMaps: []
       _startingCustomControllers: []
       _assignMouseOnStart: 0
-      _assignKeyboardOnStart: 1
+      _assignKeyboardOnStart: 0
       _excludeFromControllerAutoAssignment: 0
       _controllerMapLayoutManagerSettings:
         _enabled: 1
@@ -1487,7 +1577,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 886401381}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10, y: 4.59, z: 0}
+  m_LocalPosition: {x: 14.35, y: 4.59, z: 0}
   m_LocalScale: {x: 1, y: 10, z: 20}
   m_Children: []
   m_Father: {fileID: 238147565}
@@ -1586,35 +1676,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd7b6917da6252c4a825db42a1773b13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4.8
-  gravity: 9
-  sprint_speed_Mod: 1.2
-  rot_Mod: 10
-  ball_Force: 800
-  Player_ID: 2
+  sharedStats: {fileID: 11400000, guid: 9742f0135cf1566449382c2f1d332690, type: 2}
+  customCharacterStats: {fileID: 11400000, guid: 75ea080fe4b1d224ba64f9d9e62a8df3, type: 2}
+  Player_ID: 3
   Team_ID: 1
   Ball_Held_Pos: {fileID: 764078770}
+  ballShootPos: {fileID: 246748189}
   player_Controlled: 0
-  vel: {x: 0, y: 0, z: 0}
   running_Trail: {fileID: 0}
-  ground_Ray_Rad: 0.12
-  ground_Ray_Dist: 1
-  m_ball_Check_Radius: 4.28
-  m_Melee_Range: 2.69
-  reg_Pass_H_Offset: 0.01
-  lob_Pass_H_Offset: 0.8
-  Pass_Angle: 25
-  tackle_Dur_Max: 0.35
-  slide_Tackle_Dur_Max: 0.5
-  attack_Speed_Cooldown_Max: 0.5
-  pass_Range: 20
-  Input_Speed: 8
-  slide_Tackle_Speed_Mod: 1.8
-  tackle_Speed_Mod: 1.4
-  damage_Cooldown_Max: 1.3
-  tackle_Damage_Cooldown: 0.5
-  slide_Tackle_Damage_Cooldown: 1.5
-  attack_Cooldown: 0.5
   accept_Teammates: []
   passable_Teammates: []
   team_Manager: {fileID: 0}
@@ -1631,32 +1700,7 @@ MonoBehaviour:
   target_Pos: {fileID: 0}
   saved_Target_Pos: {fileID: 0}
   random_Offset: 0
-  ability_Duration:
-  - 0
-  - 0
-  - 0
-  ability_Effect_Duration:
-  - 0
-  - 0
-  - 0
-  ability_Cooldown:
-  - 0
-  - 0
-  - 0
-  ability_Repeater_Time:
-  - 0
-  - 0
-  - 0
-  ability_Current_Duration:
-  - 0
-  - 0
-  - 0
-  ability_Type_ID: 000000000000000000000000
-  all_Abilities:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  proximity_Ability_Range: 0
+  abilities: []
   current_Status: 0
 --- !u!54 &906034768
 Rigidbody:
@@ -1701,90 +1745,10 @@ Transform:
   m_Children:
   - {fileID: 880610091}
   - {fileID: 764078770}
+  - {fileID: 246748189}
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &971482038
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 971482039}
-  - component: {fileID: 971482041}
-  - component: {fileID: 971482040}
-  m_Layer: 0
-  m_Name: Capsule
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &971482039
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 971482038}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1188421846}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &971482040
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 971482038}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 7e492b377e3012c41b7f5190fcb6fbe5, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &971482041
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 971482038}
-  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1004946413
 GameObject:
   m_ObjectHideFlags: 0
@@ -2034,7 +1998,7 @@ Transform:
   m_GameObject: {fileID: 1097942908}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 4.59, z: 10}
-  m_LocalScale: {x: 20, y: 10, z: 1}
+  m_LocalScale: {x: 60, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 238147565}
   m_RootOrder: 1
@@ -2101,6 +2065,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1097942908}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1160460066 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b4e4247f5aeb5684199e75106b3b3cec, type: 3}
+  m_PrefabInstance: {fileID: 1892189929}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1188421842
 GameObject:
   m_ObjectHideFlags: 0
@@ -2113,6 +2082,7 @@ GameObject:
   - component: {fileID: 1188421845}
   - component: {fileID: 1188421844}
   - component: {fileID: 1188421843}
+  - component: {fileID: 1188421847}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2132,35 +2102,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd7b6917da6252c4a825db42a1773b13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4.8
-  gravity: 9
-  sprint_speed_Mod: 1.2
-  rot_Mod: 10
-  ball_Force: 800
+  sharedStats: {fileID: 11400000, guid: 9742f0135cf1566449382c2f1d332690, type: 2}
+  customCharacterStats: {fileID: 11400000, guid: 75ea080fe4b1d224ba64f9d9e62a8df3, type: 2}
   Player_ID: 1
   Team_ID: 1
   Ball_Held_Pos: {fileID: 1875491740}
+  ballShootPos: {fileID: 477350422}
   player_Controlled: 1
-  vel: {x: 0, y: 0, z: 0}
   running_Trail: {fileID: 0}
-  ground_Ray_Rad: 0.12
-  ground_Ray_Dist: 1
-  m_ball_Check_Radius: 4.28
-  m_Melee_Range: 2.69
-  reg_Pass_H_Offset: 0.01
-  lob_Pass_H_Offset: 0.8
-  Pass_Angle: 25
-  tackle_Dur_Max: 0.35
-  slide_Tackle_Dur_Max: 0.5
-  attack_Speed_Cooldown_Max: 0.5
-  pass_Range: 20
-  Input_Speed: 8
-  slide_Tackle_Speed_Mod: 1.8
-  tackle_Speed_Mod: 1.4
-  damage_Cooldown_Max: 1.3
-  tackle_Damage_Cooldown: 0.5
-  slide_Tackle_Damage_Cooldown: 1.5
-  attack_Cooldown: 0.5
   accept_Teammates: []
   passable_Teammates: []
   team_Manager: {fileID: 0}
@@ -2177,32 +2126,7 @@ MonoBehaviour:
   target_Pos: {fileID: 0}
   saved_Target_Pos: {fileID: 0}
   random_Offset: 0
-  ability_Duration:
-  - 0
-  - 0
-  - 0
-  ability_Effect_Duration:
-  - 0
-  - 0
-  - 0
-  ability_Cooldown:
-  - 0
-  - 0
-  - 0
-  ability_Repeater_Time:
-  - 0
-  - 0
-  - 0
-  ability_Current_Duration:
-  - 0
-  - 0
-  - 0
-  ability_Type_ID: 000000000000000000000000
-  all_Abilities:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  proximity_Ability_Range: 0
+  abilities: []
   current_Status: 0
 --- !u!54 &1188421844
 Rigidbody:
@@ -2245,11 +2169,35 @@ Transform:
   m_LocalPosition: {x: 0, y: 1.59, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 971482039}
-  - {fileID: 1875491740}
+  - {fileID: 1160460066}
+  - {fileID: 477350422}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1188421847
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1188421842}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: b4e4247f5aeb5684199e75106b3b3cec, type: 3}
+  m_Controller: {fileID: 9100000, guid: c458351ce420a4648bbf98e6125bdaf6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!4 &1312530838 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -1057990742613961863, guid: b4e4247f5aeb5684199e75106b3b3cec, type: 3}
+  m_PrefabInstance: {fileID: 1892189929}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1318574566
 GameObject:
   m_ObjectHideFlags: 0
@@ -2313,35 +2261,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd7b6917da6252c4a825db42a1773b13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4.8
-  gravity: 9
-  sprint_speed_Mod: 1.2
-  rot_Mod: 10
-  ball_Force: 800
-  Player_ID: 4
+  sharedStats: {fileID: 11400000, guid: 9742f0135cf1566449382c2f1d332690, type: 2}
+  customCharacterStats: {fileID: 11400000, guid: 75ea080fe4b1d224ba64f9d9e62a8df3, type: 2}
+  Player_ID: 2
   Team_ID: 2
   Ball_Held_Pos: {fileID: 1571287204}
+  ballShootPos: {fileID: 379589278}
   player_Controlled: 0
-  vel: {x: 0, y: 0, z: 0}
   running_Trail: {fileID: 0}
-  ground_Ray_Rad: 0.12
-  ground_Ray_Dist: 1
-  m_ball_Check_Radius: 4.28
-  m_Melee_Range: 2.69
-  reg_Pass_H_Offset: 0.01
-  lob_Pass_H_Offset: 0.8
-  Pass_Angle: 25
-  tackle_Dur_Max: 0.35
-  slide_Tackle_Dur_Max: 0.5
-  attack_Speed_Cooldown_Max: 0.5
-  pass_Range: 20
-  Input_Speed: 8
-  slide_Tackle_Speed_Mod: 1.8
-  tackle_Speed_Mod: 1.4
-  damage_Cooldown_Max: 1.3
-  tackle_Damage_Cooldown: 0.5
-  slide_Tackle_Damage_Cooldown: 1.5
-  attack_Cooldown: 0.5
   accept_Teammates: []
   passable_Teammates: []
   team_Manager: {fileID: 0}
@@ -2358,32 +2285,7 @@ MonoBehaviour:
   target_Pos: {fileID: 0}
   saved_Target_Pos: {fileID: 0}
   random_Offset: 0
-  ability_Duration:
-  - 0
-  - 0
-  - 0
-  ability_Effect_Duration:
-  - 0
-  - 0
-  - 0
-  ability_Cooldown:
-  - 0
-  - 0
-  - 0
-  ability_Repeater_Time:
-  - 0
-  - 0
-  - 0
-  ability_Current_Duration:
-  - 0
-  - 0
-  - 0
-  ability_Type_ID: 000000000000000000000000
-  all_Abilities:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  proximity_Ability_Range: 0
+  abilities: []
   current_Status: 0
 --- !u!54 &1542709145
 Rigidbody:
@@ -2428,6 +2330,7 @@ Transform:
   m_Children:
   - {fileID: 2045336984}
   - {fileID: 1571287204}
+  - {fileID: 379589278}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2588,13 +2491,82 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1875491739}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0.9869963, y: 0.000000007026266, z: -0.000000043143004, w: -0.1607432}
+  m_LocalPosition: {x: 0, y: 0.00426, z: -0.00143}
+  m_LocalScale: {x: 0.01, y: 0.007295865, z: 0.013706403}
   m_Children: []
-  m_Father: {fileID: 1188421846}
-  m_RootOrder: 1
+  m_Father: {fileID: 1312530838}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1892189929
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1188421846}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: b4e4247f5aeb5684199e75106b3b3cec, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b4e4247f5aeb5684199e75106b3b3cec, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.23
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b4e4247f5aeb5684199e75106b3b3cec, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.23
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b4e4247f5aeb5684199e75106b3b3cec, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.23
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b4e4247f5aeb5684199e75106b3b3cec, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b4e4247f5aeb5684199e75106b3b3cec, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.877
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b4e4247f5aeb5684199e75106b3b3cec, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b4e4247f5aeb5684199e75106b3b3cec, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b4e4247f5aeb5684199e75106b3b3cec, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b4e4247f5aeb5684199e75106b3b3cec, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b4e4247f5aeb5684199e75106b3b3cec, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b4e4247f5aeb5684199e75106b3b3cec, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b4e4247f5aeb5684199e75106b3b3cec, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b4e4247f5aeb5684199e75106b3b3cec, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b4e4247f5aeb5684199e75106b3b3cec, type: 3}
+      propertyPath: m_Name
+      value: Sport_Test_Character_Animations
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b4e4247f5aeb5684199e75106b3b3cec, type: 3}
 --- !u!1 &1927076024
 GameObject:
   m_ObjectHideFlags: 0
@@ -2741,7 +2713,7 @@ Transform:
   m_GameObject: {fileID: 1953186930}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 20, y: 1, z: 20}
+  m_LocalScale: {x: 27.720001, y: 1, z: 20}
   m_Children: []
   m_Father: {fileID: 238147565}
   m_RootOrder: 0

@@ -11,27 +11,32 @@ namespace Project.Scripts.Player
     public class Player_Behaviour : MonoBehaviour
     {
 
+        public SharedCharacterStats sharedStats;
+        public CharacterStats customCharacterStats;
 
-        public float speed, gravity, sprint_speed_Mod, rot_Mod;
-        public float ball_Force;
+
+        private float speed, gravity, sprint_speed_Mod, rot_Mod;
+        private float ball_Force;
         public int Player_ID, Team_ID;
 
         public Transform Ball_Held_Pos;
+        public Transform ballShootPos;
+
         public bool player_Controlled;
-        public Vector3 vel;
+        private Vector3 vel;
         public TrailRenderer running_Trail;
 
-        [Header("Ray variables")]
-        [SerializeField] private float ground_Ray_Rad;
-        [SerializeField] private float ground_Ray_Dist, m_ball_Check_Radius, m_Melee_Range;
+        
+        private float ground_Ray_Rad;
+        private float ground_Ray_Dist, m_ball_Check_Radius, m_Melee_Range;
 
-        [Header("Passing Variables")]
-        public float reg_Pass_H_Offset;
-        public float lob_Pass_H_Offset, Pass_Angle;
+        
+        private float reg_Pass_H_Offset;
+        private float lob_Pass_H_Offset, Pass_Angle;
 
-        [Header("Player Variables")]
-        public float tackle_Dur_Max;
-        public float slide_Tackle_Dur_Max, attack_Speed_Cooldown_Max, pass_Range, Input_Speed, slide_Tackle_Speed_Mod,
+
+        private float tackle_Dur_Max;
+        private float slide_Tackle_Dur_Max, attack_Speed_Cooldown_Max, pass_Range, Input_Speed, slide_Tackle_Speed_Mod,
             tackle_Speed_Mod, damage_Cooldown_Max, tackle_Damage_Cooldown = 0.5f, slide_Tackle_Damage_Cooldown = 1.5f;
 
         public List<Player_Behaviour> accept_Teammates, passable_Teammates;
@@ -69,21 +74,10 @@ namespace Project.Scripts.Player
         public float random_Offset;
         private Vector3 m_random_Offset, target_Vec;
 
-        //ABILITY VARIABLES
-        [HideInInspector]
-        public float[] ability_Duration = new float[3];
-        [HideInInspector]
-        public float[] ability_Effect_Duration = new float[3];
-        [HideInInspector]
-        public float[] ability_Cooldown = new float[3];
-        [HideInInspector]
-        public float[] ability_Repeater_Time = new float[3];
-        [HideInInspector]
-        public float[] ability_Current_Duration = new float[3];
-        [HideInInspector]
-        public int[] ability_Type_ID = new int[3];
-        public Ability[] all_Abilities = new Ability[3];
-        public float proximity_Ability_Range;
+        //Abilities
+        //primary, secondary, ultimate
+        [SerializeField] private List<PlayerAbilityManager> abilities = new List<PlayerAbilityManager>();
+
         public enum status
         {
             IDLE,
@@ -112,7 +106,6 @@ namespace Project.Scripts.Player
             {
                 Player_ID = 8;
             }
-
             //TEMPORARY
             transform.name = "Test_Player_Team_" + Team_ID;
         }
@@ -128,13 +121,42 @@ namespace Project.Scripts.Player
             m_DC_Max_Original = damage_Cooldown_Max;
             m_Electric_Damage_Cooldown = damage_Cooldown_Max + 1.5f;
 
-            for (int i = 0; i < all_Abilities.Length; i++)
+            if (sharedStats != null)
+                AddBaseStats();
+            if (customCharacterStats != null)
+                AddCustomStats();
+
+            foreach (var ability in abilities)
             {
-                if (all_Abilities[i] != null)
-                {
-                    all_Abilities[i].SetUp_Ability(this, i, this.GetInstanceID());
-                }
+                if(ability != null)
+                    ability.InitializeAbility();
             }
+
+        }
+
+        private void AddBaseStats()
+        {
+            gravity = sharedStats.gravity;
+            ground_Ray_Rad = sharedStats.groundRayRad;
+            ground_Ray_Dist = sharedStats.groundRayDist;
+            rot_Mod = sharedStats.rotSpeedMod;
+            m_ball_Check_Radius = sharedStats.ballCheckRad;
+            m_Melee_Range = sharedStats.meleeRange;
+            Input_Speed = sharedStats.inputSpeed;
+        }
+
+        private void AddCustomStats()
+        {
+            speed = customCharacterStats.speed;
+            sprint_speed_Mod = customCharacterStats.runningSpeed;
+            tackle_Dur_Max = customCharacterStats.tackleDuration;
+            slide_Tackle_Dur_Max = customCharacterStats.maulDuration;
+            slide_Tackle_Speed_Mod = customCharacterStats.maulSpeedMod;
+            ball_Force = customCharacterStats.ballForce;
+            attack_Speed_Cooldown_Max = customCharacterStats.attackSpeedCooldownMax;
+            damage_Cooldown_Max = customCharacterStats.damageCooldownMax;
+            tackle_Damage_Cooldown = customCharacterStats.tackleDamageCooldown;
+            slide_Tackle_Damage_Cooldown = customCharacterStats.maulDamageCooldown;
         }
 
         private void FixedUpdate()
@@ -280,32 +302,6 @@ namespace Project.Scripts.Player
                 Slide_Tackle();
             }
 
-            /*if (m_Player.GetButtonSinglePressDown("Sprint") && player_Controlled)
-            {
-                team_Manager.Change_Status(this.gameObject);
-            }*/
-
-            //press to use primary ability
-            if (m_Player.GetButtonDown("Ability_1") && !m_Player.GetButtonDown("Ability_2") && !m_Taking_Damage)
-            {
-                //Do ability
-                Do_Ability(0);
-                //Start Cooldown
-            }
-
-            //press to use secondary ability
-            if (m_Player.GetButtonDown("Ability_2") && !m_Player.GetButtonDown("Ability_1") && !m_Taking_Damage)
-            {
-                //Do ability
-                Do_Ability(1);
-                //Start Cooldown
-            }
-
-            if (m_Player.GetButtonDown("Ability_1") && m_Player.GetButtonDown("Ability_2"))
-            {
-                Do_Ability(2);
-            }
-
             //check whether or not player is moving
             if (Mathf.Abs(m_Horizontal_Comp) > 0.1f || Mathf.Abs(m_Vertical_Comp) > 0.1f)
             {
@@ -406,11 +402,10 @@ namespace Project.Scripts.Player
             if (m_Damage_Cooldown <= damage_Cooldown_Max && m_Taking_Damage)
             {
                 m_Damage_Cooldown += Time.deltaTime;
-                Debug.Log($"<color=yellow>Speed:{speed} TakingDamage{m_Taking_Damage} PlayerInput:{m_Read_Player_Inputs} Stunned:{m_Is_Being_Stunned} {gameObject.name}</color>");
                 if (!m_Wall_In_Damage_Dir())
                 {
                     float prc = m_Damage_Cooldown / damage_Cooldown_Max;
-                    speed = Mathf.Lerp(speed, 0, prc);
+                    speed = Mathf.Lerp(m_original_Speed, 0, prc);
 
                 }
                 else
@@ -446,19 +441,6 @@ namespace Project.Scripts.Player
             if (m_Cur_Stun_Dur >= m_Stun_Duration && m_Is_Being_Stunned)
             {
                 Reset_Stun();
-            }
-
-            if (m_Using_Prox_Ultimate && ability_Current_Duration[2] < ability_Duration[2])
-            {
-                ability_Current_Duration[2] += Time.deltaTime;
-                Stun_Prox_Players();
-            }
-
-            if (m_Using_Prox_Ultimate && ability_Current_Duration[2] >= ability_Duration[2])
-            {
-                m_Using_Prox_Ultimate = false;
-                ability_Current_Duration[2] = 0;
-
             }
 
         }
@@ -679,15 +661,16 @@ namespace Project.Scripts.Player
                 }
                 _mag = Vector3.Magnitude(passable_Teammates[0].transform.position - transform.position);
             }
-            Debug.Log("Dist: " + _mag);
 
             if ((passable_Teammates.Count <= 0 || _mag > pass_Range) && !m_Taking_Damage)
             {
+                m_Owned_Ball.transform.position = ballShootPos.position;
                 m_Owned_Ball.GetComponent<Rigidbody>().AddForce(transform.forward * ball_Force * m_speed_Modifier);
             }
             else if (passable_Teammates.Count > 0 && _mag < pass_Range && !m_Taking_Damage)
             {
                 Physics.gravity = Vector3.up * -gravity;
+                m_Owned_Ball.transform.position = ballShootPos.position;
                 m_Owned_Ball.GetComponent<Rigidbody>().AddForce(Calc_Vel(), ForceMode.VelocityChange);
 
 
@@ -761,7 +744,7 @@ namespace Project.Scripts.Player
                     Throw_Ball();
                     team_Manager.Ball_Drop();
                 }
-                Camera_Behaviour.cam_Inst.Do_Camera_Shake(0.3f, 0.6f);
+                Camera_Behaviour.cam_Inst.Do_Camera_Shake(0.2f, 0.32f);
             }
             else
             {
@@ -798,11 +781,6 @@ namespace Project.Scripts.Player
 
 
             return velocityXZ + velocityY;
-        }
-
-        public void Do_Ability(int ability_ID)
-        {
-            all_Abilities[ability_ID].Use_Ability(this.gameObject.GetInstanceID(), this);
         }
 
 
@@ -880,21 +858,6 @@ namespace Project.Scripts.Player
         private void OnCollisionExit(Collision collision)
         {
             rb.velocity = Vector3.zero;
-        }
-
-
-        void Stun_Prox_Players()
-        {
-            Collider[] hit_Colliders = Physics.OverlapSphere(transform.position, proximity_Ability_Range);
-            int i = 0;
-            while (i < hit_Colliders.Length)
-            {
-                if (hit_Colliders[i].tag == "Player" && hit_Colliders[i].gameObject.GetComponent<Player_Behaviour>().Team_ID != Team_ID)
-                {
-                    hit_Colliders[i].GetComponent<Player_Behaviour>().Initiate_Stun(ability_Effect_Duration[2]);
-                }
-                i++;
-            }
         }
 
         void Pick_Up_Ball(GameObject other)
@@ -1193,8 +1156,6 @@ namespace Project.Scripts.Player
             Gizmos.DrawWireSphere(transform.position + transform.forward * ground_Ray_Dist, ground_Ray_Rad * 1.5f);
             Gizmos.color = Color.yellow;
             Gizmos.DrawWireSphere(transform.position + Vector3.down * ground_Ray_Dist, m_ball_Check_Radius);
-            Gizmos.color = Color.green;
-            Gizmos.DrawWireSphere(transform.position, proximity_Ability_Range);
         }
     }
 }

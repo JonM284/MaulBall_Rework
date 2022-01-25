@@ -76,8 +76,8 @@ namespace Project.Scripts.Camera
         void LateUpdate()
         {
             Vector3 targetPosition = new Vector3(target.position.x + offset.x, target.position.y + offset.y, target.position.z + offset.z);
-            Vector3 smooth_Out_Pos = Vector3.SmoothDamp(transform.position,
-                targetPosition, ref vel, Time.deltaTime * follow_Speed);
+            Vector3 smooth_Out_Pos = Vector3.Lerp(transform.position,
+                targetPosition, Time.deltaTime * follow_Speed);
 
             if (Watch_Ball)
             {

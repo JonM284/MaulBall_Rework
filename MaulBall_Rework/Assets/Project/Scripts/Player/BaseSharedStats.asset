@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20f652e720802564eb7cb09564dd21ee, type: 3}
+  m_Name: BaseSharedStats
+  m_EditorClassIdentifier: 
+  gravity: 9
+  groundRayRad: 0.12
+  groundRayDist: 1
+  rotSpeedMod: 10
+  ballCheckRad: 4.28
+  meleeRange: 2.69
+  inputSpeed: 8
+  regularPassHeightOffset: 0.01
+  lobPassHeightOffset: 0.8
+  passAngle: 25
+  passRange: 20
